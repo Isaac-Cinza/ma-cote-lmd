@@ -1,0 +1,9 @@
+{
+  "appId": "com.cinzalabs.calcullmd",
+  "appName": "Ma Cote LMD",
+  "webDir": "www",
+  "backgroundColor": "#0a4a40",
+  "android": {
+    "allowMixedContent": false
+  }
+}

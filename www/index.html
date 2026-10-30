@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a4a40">
+<meta name="description" content="Ma Cote LMD : fixez votre objectif et calculez vos résultats LMD (universités de la RDC).">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ma Cote LMD">
+<meta name="format-detection" content="telephone=no">
+<!-- © Isaac CINZA - tous droits réservés -->
+<title>Ma Cote LMD</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header class="hero">
+    <button id="th" class="ghost" type="button" aria-label="Changer le thème clair / sombre">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor"/></svg>
+    </button>
+    <small>Calcul LMD · universités de la RDC</small>
+    <h1>Ma Cote LMD</h1>
+    <p>Entrez vos notes (TJ/10 et EXAM/10, ou la cote/20), le calcul se fait en direct.</p>
+    <div class="hero-foot"><p class="by">par Isaac CINZA</p><button id="ab-open" class="pill" type="button">À propos</button></div>
+  </header>
+
+  <div class="pick">
+    <div><label for="et">Établissement</label><select id="et"></select></div>
+    <div><label for="fa" id="fa-l">Faculté</label><select id="fa"></select></div>
+    <div><label for="pr">Promotion</label><select id="pr"></select></div>
+  </div>
+
+  <section id="obj">
+    <h2>Mon objectif</h2>
+    <div class="ob-body">
+      <label for="ob">Je vise</label>
+      <select id="ob"></select>
+      <div id="oo" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <div id="app"></div>
+
+  <section id="res">
+    <h2>Récapitulatif de l’année</h2>
+    <div id="dl"></div>
+    <div id="fin"></div>
+  </section>
+
+  <div class="actions">
+    <button id="pn" type="button" class="primary">Imprimer / PDF</button>
+    <button id="sh" type="button">Partager</button>
+    <button id="rz" type="button" class="wide">Réinitialiser</button>
+  </div>
+  <p class="note">Vos notes restent enregistrées sur cet appareil, rien n’est envoyé sur Internet.</p>
+
+  <section class="promo">
+    <h2>Une application sur mesure ?</h2>
+    <div class="promo-body">
+      <p>Pour votre faculté, votre association, votre entreprise ou votre projet : parlons-en.</p>
+      <div class="actions">
+        <button id="ft-contact" type="button" class="primary">Me contacter</button>
+        <button id="ft-avis" type="button">Donner un avis</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>© Isaac CINZA</strong>
+    E-mail : <a href="mailto:isaaccinza730@gmail.com">isaaccinza730@gmail.com</a><br>
+    WhatsApp : <a href="https://wa.me/243808464837">+243 808464837</a>
+  </footer>
+</main>
+
+<div class="bar" id="bar"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="pv" aria-hidden="true"></div>
+
+<div id="ab" class="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="ab-t">
+  <div class="sheet-card">
+    <button class="x" data-close="ab" type="button" aria-label="Fermer">×</button>
+    <small>Bienvenue</small>
+    <h2 id="ab-t">Ma Cote LMD</h2>
+    <p>Entrez vos notes au fur et à mesure de l’année : l’application calcule vos moyennes par UE, votre moyenne annuelle et votre décision (VT, VP ou ajourné).</p>
+    <p>Choisissez ensuite ce que vous visez : valider l’année ou décrocher une mention. Elle vous dit quelle moyenne il vous faut sur les cours qui restent, et quels cours rapportent le plus de points, pour que vous gardiez votre énergie pour ceux qui comptent.</p>
+    <p>Vos notes restent sur votre téléphone. Rien n’est envoyé sur Internet, et ça marche sans connexion.</p>
+    <p class="disc">Calcul personnel, sans valeur officielle : seul le PV de la faculté fait foi.</p>
+    <div id="ios-tip" class="tip" hidden>Sur iPhone : dans Safari, touchez Partager puis « Sur l’écran d’accueil » pour installer l’application.</div>
+    <hr>
+    <div class="me">
+      <small>Application conçue par</small>
+      <h3>Isaac CINZA</h3>
+      <p>Étudiant en médecine à l’UOM, fondateur de CINZA Research Hub, consultant en recherche et analyste de données, développeur web front-end.</p>
+      <p class="pitch"><b>Vous avez besoin d’une application ou d’un site sur mesure ?</b><br>Pour votre faculté, votre association, votre entreprise ou votre projet, parlons-en.</p>
+      <div class="ctas">
+        <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/243808464837?text=Bonjour%20Isaac%2C%20je%20souhaite%20une%20application%20sur%20mesure.">WhatsApp · +243 808 464 837</a>
+        <a class="btn" href="mailto:isaaccinza730@gmail.com?subject=Application%20sur%20mesure">E-mail · isaaccinza730@gmail.com</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://linkedin.com/in/isaac-cinza1">LinkedIn</a>
+      </div>
+      <button type="button" id="ab-fb">Donner un avis sur l’application</button>
+    </div>
+    <button type="button" id="ab-go" class="primary">Commencer</button>
+  </div>
+</div>
+
+<div id="fb" class="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="fb-title">
+  <div class="sheet-card">
+    <button class="x" data-close="fb" type="button" aria-label="Fermer">×</button>
+    <small>Votre avis compte</small>
+    <h2 id="fb-title">Donner un avis</h2>
+    <p>Une idée, un souci, une faculté à ajouter ? Écrivez-moi : votre message m’arrive directement, par WhatsApp ou par e-mail, selon votre choix.</p>
+    <label>Votre note (facultatif)</label>
+    <div id="fb-st" class="stars" role="group" aria-label="Note sur 5">
+      <button type="button" data-v="1" aria-label="1 étoile">★</button><button type="button" data-v="2" aria-label="2 étoiles">★</button><button type="button" data-v="3" aria-label="3 étoiles">★</button><button type="button" data-v="4" aria-label="4 étoiles">★</button><button type="button" data-v="5" aria-label="5 étoiles">★</button>
+    </div>
+    <label for="fb-t">Votre message</label>
+    <textarea id="fb-t" rows="5" placeholder="Écrivez ici…"></textarea>
+    <div class="ctas">
+      <a id="fb-wa" class="btn wa" target="_blank" rel="noopener" href="#">Envoyer par WhatsApp</a>
+      <a id="fb-ml" class="btn" href="#">Envoyer par e-mail</a>
+    </div>
+    <p class="disc">Vos notes et vos résultats ne sont pas envoyés, seulement ce message.</p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="pdf.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
